@@ -26,13 +26,13 @@ function bookmarkApiFetch(...args){
 
 //get 
 function getBookmarks(){
-  return listApiFetch(`${BASE_URL}/bookmarks`)
+  return bookmarkApiFetch(`${BASE_URL}/bookmarks`)
 };
 
 //post
 function createBookmark(){
   const newBookmark = JSON.stringify({title});
-  return listApiFetch(`${BASE_URL}/bookmarks`, {
+  return bookmarkApiFetch(`${BASE_URL}/bookmarks`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -44,7 +44,7 @@ function createBookmark(){
 //update
 function updateBookmark(id, updateData){
   const newData = JSON.stringify(updateData);
-  return listApiFetch(`${BASE_URL}/bookmarks/${id}`, {
+  return bookmarkApiFetch(`${BASE_URL}/bookmarks/${id}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json'
@@ -55,7 +55,7 @@ function updateBookmark(id, updateData){
 
 //delete
 function deleteBookmark(id){
-  return listApiFetch(`${BASE_URL}/bookmarks/${id}`, {
+  return bookmarkApiFetch(`${BASE_URL}/bookmarks/${id}`, {
     method: 'DELETE'
   });
 };
