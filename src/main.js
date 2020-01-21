@@ -1,6 +1,7 @@
 'use strict';
 
 import store from './store';
+import api from './api';
 
 //template functions
 
@@ -97,8 +98,39 @@ return `
 `;
 };
 
-function bindEventListeners() {
+//renders 
 
+function render() {
+  //renderError();
+  console.log('render is running');
+  $('main').html(templateLanding());
 };
 
+//listeners
 
+function handleStart(){
+  $(window).on('load', function() {
+    render();
+  })
+};
+function handleAdd(){}
+function handleSort(){}
+function handleDelete(){}
+function handleEdit(){}
+function handleExpand(){}
+
+
+
+function bindEventListeners() {
+  handleStart,
+  handleAdd,
+  handleSort,
+  handleDelete,
+  handleEdit,
+  handleExpand
+};
+
+export default {
+  render,
+  bindEventListeners
+};
