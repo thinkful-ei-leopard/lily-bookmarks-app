@@ -30,8 +30,13 @@ function getBookmarks(){
 };
 
 //post
-function createBookmark(){
-  const newBookmark = JSON.stringify({title});
+function createBookmark(title, url, desc, rating){
+  const newBookmark = JSON.stringify({
+    title,
+    url,
+    desc,
+    rating
+  });
   return bookmarkApiFetch(`${BASE_URL}/bookmarks`, {
     method: 'POST',
     headers: {
