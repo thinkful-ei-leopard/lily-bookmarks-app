@@ -1,3 +1,9 @@
+* {
+  background-color: #2F4455;
+  color: #DA7B93;
+  font-family: 'Karla';
+}
+
 .txt-center {
   text-align: center;
 }
@@ -26,7 +32,7 @@
   position: relative;
   width: 1.1em;
   cursor: pointer;
-  color: #000;
+  color: #2E151B;
 }
 
 .rating > label:hover,
@@ -42,11 +48,175 @@
   content: "\2605";
   position: absolute;
   left: 0;
-  color: #FFD700;
+  color: #DA7B93;
 }
 
-form.bookmark-container {
+.bookmark-container {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  background-color: #376F70;
+  margin-top: 10px;
+}
+
+.bookmark-thumbnail {
+  background-color: #376F70;
+}
+
+p {
+  background-color: #376F70;
+  font-weight: bold;
+  padding-left: 5px;
+}
+
+span {
+  padding-left: 20px;
+}
+
+span {
+  background-color: #376F70;
+}
+
+.edit-button{
+  background-color: #376F70;
+  align-self: right;
+}
+
+.expanded-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  background-color: #376F70;
+  margin-top: 10px;
+}
+
+h2 , h3 {
+  background-color: #376F70;
+}
+
+a {
+  background-color: #376F70;
+}
+
+.delete-button {
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none !important;
+  display: inline-block;
+  transition: all 0.4s ease 0s;
+  background-color: #376F70;
+  font-size: 30px;
+  margin-bottom: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-weight: bolder;
+}
+
+.delete-button:hover {
+  color: #2A1B3C !important;
+  background-color: #A4B3B6;
+  transition: all 0.4s ease 0s;
+}
+
+.cancel-button {
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none !important;
+  display: inline-block;
+  transition: all 0.4s ease 0s;
+  background-color: #376F70;
+  font-size: 20px;
+  margin-bottom: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.cancel-button:hover {
+  color: #2A1B3C !important;
+  background-color: #A4B3B6;
+  transition: all 0.4s ease 0s;
+}
+
+#add-start {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #376F70;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  margin-top: 10px;
+}
+
+#add-button {
+  background-color: #376F70;
+  border: none;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.add-bookmark-form {
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #376F70;
+}
+
+input {
+  border: none;
+  background-color: #376F70;
+  height: 20px;
+  margin-bottom: 10px;
+}
+
+#cancel-add-button {
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none !important;
+  display: inline-block;
+  transition: all 0.4s ease 0s;
+  background-color: #376F70;
+  margin-bottom: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#cancel-add-button:hover {
+  color: #2A1B3C !important;
+  background-color: #A4B3B6;
+  transition: all 0.4s ease 0s;
+}
+
+.full {
+  border: none;
+  background-color: #376F70;
+}
+
+.rating {
+  background-color: #376F70;
+  margin-bottom: 10px;
+}
+
+input[type=text]{
+  border: 1px solid #A4B3B6;
+}
+
+#add-submit {
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none !important;
+  display: inline-block;
+  transition: all 0.4s ease 0s;
+  background-color: #376F70;
+  margin-bottom: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#add-submit:hover {
+  color: #2A1B3C !important;
+  background-color: #A4B3B6;
+  transition: all 0.4s ease 0s;
 }

@@ -10,17 +10,18 @@ function templateLanding(){
   return `
   <h1>My Bookmarks</h1>    
     <select id="dropdown">
-      <option value="0" selected>Show by rating</option>
-      <option value="0">All</option>
-      <option value="2"> &#9733;	&#9733;  and above</option>
-      <option value="3"> &#9733; &#9733; &#9733;  and above</option>
-      <option value="4"> &#9733; &#9733; &#9733; &#9733;  and above</option>
-      <option value="5"> &#9733; &#9733; &#9733; &#9733; &#9733;  only</option>
+      <option value=0 selected>Show by rating</option>
+      <option value=0>All</option>
+      <option value=2> &#9733;	&#9733;  and above</option>
+      <option value=3> &#9733; &#9733; &#9733;  and above</option>
+      <option value=4> &#9733; &#9733; &#9733; &#9733;  and above</option>
+      <option value=5> &#9733; &#9733; &#9733; &#9733; &#9733;  only</option>
     </select>
     ${bookmarkList}
     <form id="add-start" action="#">
      <p>Add a bookmark<button type="submit" id="add-button"> + </button></p>
     </form>
+    <div class="error-container"> </div>
   `;
 };
 
@@ -38,7 +39,7 @@ function templateAdd(){
       <input type="radio" id="star1" name="rating" value="1" class="radio-btn hide"/><label class="full" for="star1" title="1 star">&#9733;</label>
     </div>
       <input type="text" name="description" value="Bookmark Description"/>
-      <button name="cancel-add"> Cancel </button>
+      <button name="cancel-add" id="cancel-add-button"> Cancel </button>
       <input type="submit" id="add-submit" value="Submit">
     </form>
   `;
@@ -52,7 +53,7 @@ function templateBookmark(bookmark){
   <div class="bookmark-thumbnail">  
     <p>${bookmark.title}
       <span class="star-rating">${stars}</span>
-      <button type="submit" class="edit-button"> &#9998; </button>
+        
     </p>
   </div>
   </form>
@@ -68,7 +69,7 @@ function templateBookmark(bookmark){
     <h3>Description</h3>
     <p>${bookmark.desc}</p>
     <button type="submit" class="delete-button"> &#128465; </button>
-    <button type="button" name="cancel-expand" > Cancel </button>
+    <button type="button" name="cancel-expand" class="cancel-button"> Cancel </button>
   </form>
   `;
   }
@@ -115,7 +116,7 @@ function handleBookmarkList(bookmarks){
 };
 
 function handleAddStart(){
-  $('main').on('submit', '#add-start', event => {
+  $('main').on('click', '#add-start', event => {
     console.log('add start');
     event.preventDefault();
     store.addMode = true;
@@ -140,7 +141,7 @@ function handleAddSubmit(){
      .catch((error) => {
        store.handleError(error.message);
        console.error(error.message);
-       //renderError();
+       renderError();
      })
   });
 };
@@ -165,14 +166,19 @@ function handleDelete(){
         store.findAndDelete(id);
         render();
       })
+      .catch((error) => {
+        console.log(error);
+        store.handleError(error.message);
+        renderError();
+      });
   });
 };
 
 function handleFilter(){
   $('main').on('change', '#dropdown', event => {
-    console.log('handle changed');
     event.preventDefault();
-    let filter = $('option').val();
+    let filter = $('option:selected').val();
+    console.log(filter);
     store.filter = filter;
     render();
   });
@@ -227,9 +233,32 @@ function findBookmarkIdFromElement(bookmark) {
     .data('id')
 };
 
+function generateError(message) {
+  return `
+      <section class="error-content">
+        <button id="cancel-error">X</button>
+        <p>${message}</p>
+      </section>
+    `;
+};
+
+function renderError() {
+  if (store.error) {
+    const el = generateError(store.error);
+    $('.error-container').html(el);
+  } else {
+    $('.error-container').empty();
+  }
+};
+
+function handleCloseError() {
+  $('main').on('click', '#cancel-error', () => {
+    store.error = null;
+    renderError();
+  });
+};
 
 function bindEventListeners() {
-  // handleStart();
   handleAddStart();
   handleAddSubmit();
   handleFilter();
@@ -238,6 +267,7 @@ function bindEventListeners() {
   handleExpand();
   handleCancelExpand();
   handleCancelAdd();
+  handleCloseError();
 };
 
 export default {
