@@ -5,6 +5,7 @@ let adding = false;
 let error = null;
 let filter = 0;
 let addMode = false;
+let filteredBookmarks = [];
 
 function findById(id) {
   return this.bookmarks.find(currentBookmark => currentBookmark.id === id);
